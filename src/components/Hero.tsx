@@ -58,9 +58,9 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
                   href="#contact" 
-                  className="bg-viridity-500 hover:bg-viridity-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center group"
+                  className="bg-viridity-600 hover:bg-viridity-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center group"
                 >
-                  Get Started
+                  Start Exploring
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
                 <a 
