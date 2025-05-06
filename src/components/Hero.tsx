@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Code, Terminal, Cpu, Infinity } from 'lucide-react';
@@ -42,18 +41,18 @@ const Hero = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <div className="inline-block px-3 py-1 mb-4 bg-viridity-100 text-viridity-700 rounded-full text-sm font-medium">
-                WordPress Theme by Viridity Technologies
+                Modern Theme for Your Next Project
               </div>
               
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-                <span className="block">Cutting-edge</span>
+                <span className="block">Welcome to</span>
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-viridity-600 to-viridity-400">
-                  WordPress Theme
+                  Viridify Theme
                 </span>
               </h1>
               
               <p className="text-lg md:text-xl mb-8 text-foreground/80 max-w-xl">
-                Crafted for businesses with a focus on custom apps, automation workflows, and AI-driven solutions. Elevate your online presence with a design that matches your innovation.
+                This is a test update to verify that changes are working correctly. The Viridify theme combines modern design with powerful functionality for an exceptional web experience.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
