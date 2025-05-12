@@ -10,12 +10,11 @@ const About = () => {
   const isStatsInView = useInView(statsRef, { once: true, margin: "-100px 0px" });
   
   const advantages = [
-    "Cutting-edge WordPress design principles",
-    "Optimized for speed and performance",
-    "SEO-friendly architecture",
-    "Seamless integration capabilities",
-    "Responsive design for all devices",
-    "Custom admin dashboard options"
+    "Custom Business Apps",
+    "AI Agents & Workflows",
+    "Process Automation & Optimization",
+    "API Integrations",
+    "Cloud Architecture"
   ];
   
   const stats = [
@@ -42,7 +41,7 @@ const About = () => {
               Transforming Ideas Into <span className="text-viridity-600">Digital Realities</span>
             </h2>
             <p className="text-lg mb-6 text-muted-foreground">
-              Viridity Technologies specializes in creating custom applications, automating workflows, and developing AI agents that drive business growth. Our WordPress theme reflects our commitment to innovation, usability, and exceptional performance.
+              Viridity Technologies specializes in creating custom applications, automating workflows, and developing AI agents that drive business growth. From streamlining internal processes to creating powerful customer-facing applications, we help businesses leverage cutting-edge technology to gain a competitive edge in today's fast-paced digital landscape.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
