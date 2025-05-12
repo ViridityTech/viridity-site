@@ -41,18 +41,18 @@ const Hero = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <div className="inline-block px-3 py-1 mb-4 bg-viridity-100 text-viridity-700 rounded-full text-sm font-medium">
-                Modern Theme for Your Next Project
+                Intelligent Solutions for Digital Labor
               </div>
               
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
                 <span className="block">Welcome to</span>
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-viridity-600 to-viridity-400">
-                  Viridify Theme
+                  Viridity Technologies
                 </span>
               </h1>
               
               <p className="text-lg md:text-xl mb-8 text-foreground/80 max-w-xl">
-                This is a test update to verify that changes are working correctly. The Viridify theme combines modern design with powerful functionality for an exceptional web experience.
+                We create custom business applications, AI agents, automation systems, and integrations that transform how businesses operate.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
