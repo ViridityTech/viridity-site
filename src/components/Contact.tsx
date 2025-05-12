@@ -29,8 +29,8 @@ const Contact = () => {
     {
       icon: <MapPin className="h-5 w-5" />,
       title: "Office",
-      details: "123 Innovation Way, Tech City, TC 12345",
-      link: "https://maps.google.com"
+      details: "708 Walnut St, Cincinnati, OH 45202",
+      link: "https://maps.app.goo.gl/fNP88Nns2wo4fGx2A"
     }
   ];
 
@@ -45,13 +45,13 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="inline-block px-3 py-1 mb-4 bg-viridity-100 text-viridity-700 rounded-full text-sm font-medium">
-              Get In Touch
+              Ready to Start
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Start Your Digital Transformation?
+              Let's Design Your Unique Solution
             </h2>
             <p className="text-lg text-muted-foreground">
-              Contact us today to discuss how our WordPress theme and digital solutions can help your business thrive in the digital landscape.
+              Contact us today to discuss how our digital solutions can help your business thrive in the digital landscape.
             </p>
           </motion.div>
         </div>
@@ -124,7 +124,7 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <h3 className="text-2xl font-semibold mb-6">Send Us a Message</h3>
+            <h3 className="text-2xl font-semibold mb-6">Let's Start the Conversation</h3>
             
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -185,7 +185,7 @@ const Contact = () => {
                 type="submit"
                 className="w-full bg-viridity-500 hover:bg-viridity-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300"
               >
-                Send Message
+                Talk to a Human
               </button>
             </form>
           </motion.div>
