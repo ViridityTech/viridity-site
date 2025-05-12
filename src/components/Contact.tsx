@@ -17,8 +17,8 @@ const Contact = () => {
     {
       icon: <PhoneCall className="h-5 w-5" />,
       title: "Phone",
-      details: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      details: "+1 (513) 381-5555",
+      link: "tel:+15133815555"
     },
     {
       icon: <Mail className="h-5 w-5" />,
@@ -48,10 +48,10 @@ const Contact = () => {
               Ready to Start
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Let's Design Your Unique Solution
+              Talk to the Founders Directly 
             </h2>
             <p className="text-lg text-muted-foreground">
-              Contact us today to discuss how our digital solutions can help your business thrive in the digital landscape.
+              If you have a project, you're in the right place. We're passionate about turning ideas into reality and helping businesses grow.
             </p>
           </motion.div>
         </div>
@@ -124,7 +124,7 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <h3 className="text-2xl font-semibold mb-6">Let's Start the Conversation</h3>
+            <h3 className="text-2xl font-semibold mb-6">Start the Conversation</h3>
             
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -170,7 +170,7 @@ const Contact = () => {
               
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-1">
-                  Message
+                  We read and respond to every lead. 
                 </label>
                 <textarea
                   id="message"
@@ -185,7 +185,7 @@ const Contact = () => {
                 type="submit"
                 className="w-full bg-viridity-500 hover:bg-viridity-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300"
               >
-                Talk to a Human
+                Talk to the Founders
               </button>
             </form>
           </motion.div>
