@@ -41,7 +41,7 @@ const Hero = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <div className="inline-block px-3 py-1 mb-4 bg-viridity-100 text-viridity-700 rounded-full text-sm font-medium">
-                Intelligent Solutions for Digital Labor
+                AI Isn't New. Neither Are We. 
               </div>
               
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
