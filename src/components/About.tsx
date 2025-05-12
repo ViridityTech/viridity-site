@@ -14,13 +14,13 @@ const About = () => {
     "AI Agents & Workflows",
     "Process Automation & Optimization",
     "API Integrations",
-    ""
+    "AI Consultation & Strategy"
   ];
   
   const stats = [
     { value: "8+", label: "Years Experience" },
     { value: "50+", label: "Solutions Completed" },
-    { value: "50+", label: "Tech Platforms Used" },
+    { value: "70+", label: "Tech Platforms Used" },
     { value: "99%", label: "Client Satisfaction" }
   ];
 
