@@ -104,13 +104,13 @@ const Features = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="inline-block px-3 py-1 mb-4 bg-viridity-100 text-viridity-700 rounded-full text-sm font-medium">
-              Our Features
+              Our Services
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Cutting-Edge Solutions for Modern Businesses
             </h2>
             <p className="text-lg text-muted-foreground">
-              Explore our comprehensive suite of services designed to transform your digital presence and streamline your operations.
+              Explore our comprehensive suite of services designed to transform your digital labor and streamline your operations.
             </p>
           </motion.div>
         </div>
