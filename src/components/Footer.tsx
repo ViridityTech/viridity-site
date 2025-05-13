@@ -11,7 +11,7 @@ const Footer = () => {
       links: [
         { text: "About Us", url: "#about" },
         { text: "Our Team", url: "#" },
-        { text: "Careers", url: "#" },
+        { text: "Our Mission", url: "#" },
         { text: "Contact Us", url: "#contact" }
       ]
     },
@@ -21,7 +21,7 @@ const Footer = () => {
         { text: "Custom Applications", url: "#" },
         { text: "Workflow Automation", url: "#" },
         { text: "AI Development", url: "#" },
-        { text: "WordPress Themes", url: "#" }
+        { text: "API Integrations", url: "#" }
       ]
     },
     {
