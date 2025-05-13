@@ -51,7 +51,7 @@ const Contact = () => {
               Talk to the Founders Directly 
             </h2>
             <p className="text-lg text-muted-foreground">
-              If you have a project, you're in the right place. We're passionate about turning ideas into reality and helping businesses grow.
+              Have a vision or project in mind? You’re in the perfect place. We love bringing bold ideas to life and fueling business growth. Let’s make something amazing - starting today.
             </p>
           </motion.div>
         </div>
