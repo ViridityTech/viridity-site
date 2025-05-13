@@ -77,7 +77,7 @@ const Navbar = () => {
             href="#contact" 
             className="bg-viridity-500 text-white px-5 py-2 rounded-lg font-medium hover:bg-viridity-600 transition-colors duration-300"
           >
-            Get Started
+            Talk to the Founders
           </a>
         </motion.div>
         
