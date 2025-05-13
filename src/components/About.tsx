@@ -41,7 +41,7 @@ const About = () => {
               Transforming Ideas Into <span className="text-viridity-600">Digital Realities</span>
             </h2>
             <p className="text-lg mb-6 text-muted-foreground">
-              Viridity Technologies specializes in creating custom applications, automating workflows, and developing AI agents that drive business growth. From streamlining internal processes to creating powerful customer-facing applications, we help businesses leverage cutting-edge technology to gain a competitive edge in today's fast-paced digital landscape.
+              Viridity Technologies specializes in creating custom applications, automating workflows, and developing AI agents that drive business growth. From streamlining internal processes to creating intelligent systems, we help businesses leverage cutting-edge technology to gain a competitive edge in their operations and labor force.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
