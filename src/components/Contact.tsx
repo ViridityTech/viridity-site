@@ -87,7 +87,7 @@ const Contact = () => {
   <h4 className="text-lg font-medium mb-4">Follow Us</h4>
   <div className="flex space-x-4">
     <a 
-      href="https://linkedin.com"
+      href="https://www.linkedin.com/in/matt-mckeown-orchard/"
       className="w-10 h-10 rounded-full bg-viridity-100 text-viridity-600 flex items-center justify-center transition-all duration-300 hover:bg-viridity-500 hover:text-white"
       aria-label="Follow us on linkedin"
     >
