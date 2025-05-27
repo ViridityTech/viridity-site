@@ -52,20 +52,20 @@ const Footer = () => {
             </p>
             
             <div className="flex items-center space-x-4">
-  <a 
-    href="https://linkedin.com"
-    className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 text-viridity-600 flex items-center justify-center transition-all duration-300 hover:bg-viridity-500 hover:text-white"
-    aria-label="Follow us on linkedin"
-  >
-    <span className="sr-only">Follow us on linkedin</span>
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-      <rect x="2" y="9" width="4" height="12"></rect>
-      <circle cx="4" cy="4" r="2"></circle>
-    </svg>
-  </a>
-</div>
-
+              <a 
+                href="https://linkedin.com"
+                className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 text-viridity-600 flex items-center justify-center transition-all duration-300 hover:bg-viridity-500 hover:text-white"
+                aria-label="Follow us on linkedin"
+              >
+                <span className="sr-only">Follow us on linkedin</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+            </div>
+          </div>
           
           <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-8">
             {footerLinks.map((column, colIndex) => (
