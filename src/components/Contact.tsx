@@ -1,16 +1,79 @@
-
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { PhoneCall, Mail, MapPin } from 'lucide-react';
+import { PhoneCall, Mail, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import emailjs from '@emailjs/browser';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
+import { EMAILJS_CONFIG } from '@/lib/emailjs';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+
+// Form validation schema
+const contactFormSchema = z.object({
+  from_name: z.string().min(2, 'Name must be at least 2 characters'),
+  from_email: z.string().email('Please enter a valid email address'),
+  subject: z.string().min(5, 'Subject must be at least 5 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+});
+
+type ContactFormData = z.infer<typeof contactFormSchema>;
 
 const Contact = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
+  const { toast } = useToast();
   
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Form submission logic would go here
-    console.log('Form submitted');
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      from_name: '',
+      from_email: '',
+      subject: '',
+      message: '',
+    },
+  });
+
+  const { isSubmitting } = form.formState;
+
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      // Send email using EmailJS
+      const result = await emailjs.sendForm(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        formRef.current!,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      if (result.status === 200) {
+        toast({
+          title: "Message sent successfully!",
+          description: "We'll get back to you within 24 hours.",
+          duration: 5000,
+        });
+        form.reset();
+      }
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact us directly at contact@viridity.com",
+        variant: "destructive",
+        duration: 5000,
+      });
+    }
   };
   
   const contactInfo = [
@@ -51,7 +114,7 @@ const Contact = () => {
               Talk to the Founders Directly 
             </h2>
             <p className="text-lg text-muted-foreground">
-              If you have a project, you're in the right place. We're passionate about turning ideas into reality and helping businesses grow.
+              Have a vision or project in mind? You're in the perfect place. We love bringing bold ideas to life and fueling business growth. Let's make something amazing - starting today.
             </p>
           </motion.div>
         </div>
@@ -126,68 +189,114 @@ const Contact = () => {
           >
             <h3 className="text-2xl font-semibold mb-6">Start the Conversation</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-viridity-500 transition-all duration-200"
-                    placeholder="John Doe"
-                    required
+            <Form {...form}>
+              <form 
+                ref={formRef}
+                onSubmit={form.handleSubmit(onSubmit)} 
+                className="space-y-5"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <FormField
+                    control={form.control}
+                    name="from_name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Full Name</FormLabel>
+                        <FormControl>
+                          <Input 
+                            placeholder="John Doe" 
+                            {...field}
+                            className="focus:ring-2 focus:ring-viridity-500"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="from_email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email Address</FormLabel>
+                        <FormControl>
+                          <Input 
+                            type="email"
+                            placeholder="john@example.com" 
+                            {...field}
+                            className="focus:ring-2 focus:ring-viridity-500"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
                 </div>
                 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-1">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-viridity-500 transition-all duration-200"
-                    placeholder="john@example.com"
-                    required
-                  />
-                </div>
-              </div>
-              
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-1">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-viridity-500 transition-all duration-200"
-                  placeholder="How can we help?"
-                  required
+                <FormField
+                  control={form.control}
+                  name="subject"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Subject</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="How can we help?" 
+                          {...field}
+                          className="focus:ring-2 focus:ring-viridity-500"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-1">
-                  We read and respond to every lead. 
-                </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-viridity-500 transition-all duration-200"
-                  placeholder="Tell us about your project..."
-                  required
-                ></textarea>
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full bg-viridity-500 hover:bg-viridity-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300"
-              >
-                Talk to the Founders
-              </button>
-            </form>
+                
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>We read and respond to every lead.</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          rows={5}
+                          placeholder="Tell us about your project..." 
+                          {...field}
+                          className="focus:ring-2 focus:ring-viridity-500"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                {/* Hidden field for timestamp */}
+                <input 
+                  type="hidden" 
+                  name="submission_date" 
+                  value={new Date().toLocaleString()} 
+                />
+                
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-viridity-500 hover:bg-viridity-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-4 w-4 mr-2" />
+                      Talk to the Founders
+                    </>
+                  )}
+                </Button>
+              </form>
+            </Form>
           </motion.div>
         </div>
       </div>
