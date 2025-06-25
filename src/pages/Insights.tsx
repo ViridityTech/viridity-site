@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import Navbar from '../components/ui/Navbar';
-import Footer from '../components/ui/Footer';
+import Layout from '../components/ui/Layout';
 
 const posts = [
   {
@@ -23,8 +22,7 @@ const posts = [
 
 const Insights = () => {
   return (
-    <>
-      <Navbar />
+    <Layout>
       <section id="insights" className="section-padding bg-viridity-50/30 dark:bg-viridity-950/10">
         <div className="container mx-auto">
           <div className="mb-12">
@@ -59,8 +57,7 @@ const Insights = () => {
           </div>
         </div>
       </section>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 
