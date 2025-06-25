@@ -27,7 +27,7 @@ const Footer = () => {
     {
       title: "Resources",
       links: [
-        { text: "Insights", url: "#" },
+        { text: "Insights", url: "/insights" },
         { text: "Portfolio", url: "#" },
         { text: "FAQs", url: "#" }
       ]
