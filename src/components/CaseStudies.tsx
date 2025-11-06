@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { ArrowRight, Building2, ShoppingCart, Stethoscope } from 'lucide-react';
+import { ArrowRight, Building2, ShoppingCart, Stethoscope, Bot } from 'lucide-react';
 import { caseStudies } from '@/data/caseStudies';
 
 interface CaseStudyCardProps {
@@ -79,7 +79,8 @@ const CaseStudies = () => {
   const iconMap: Record<string, React.ReactNode> = {
     Building2: <Building2 size={28} />,
     ShoppingCart: <ShoppingCart size={28} />,
-    Stethoscope: <Stethoscope size={28} />
+    Stethoscope: <Stethoscope size={28} />,
+    Bot: <Bot size={28} />
   };
 
   return (

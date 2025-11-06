@@ -21,76 +21,58 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "enterprise-resource-planning",
-    title: "Enterprise Resource Planning",
-    industry: "Manufacturing",
+    slug: "ai-powered-lead-forecasting",
+    title: "AI-Powered Lead Forecasting Platform",
+    industry: "Marketing Analytics",
+    icon: "Bot",
+    shortDescription: "Built a comprehensive machine learning platform that predicts lead generation across 20+ locations by integrating Salesforce, Google Ads, and spend data with automated model selection.",
+    fullDescription: "A multi-location business needed accurate lead forecasting to optimize marketing budget allocation across markets. They struggled with manual forecasting processes, disconnected data sources, and lacked visibility into what drives lead generation in different locations.",
+    challenge: "The business was manually aggregating data from Salesforce, Google Ads, and spreadsheets, spending 10-15 hours weekly on forecasting. They had no unified view of lead performance, inaccurate predictions leading to poor budget decisions, and no way to identify which factors drive leads in different markets.",
+    solution: "We developed an AI-powered forecasting platform that automatically integrates data from Salesforce, Google Ads, and Google Sheets. The system uses advanced feature engineering (30+ predictive features) and automatically selects the best-performing machine learning model (Random Forest or Gradient Boosting) for each location. A Streamlit dashboard provides interactive forecasting, feature importance analysis, and real-time visualization.",
+    results: [
+      "10-15 hours saved weekly on manual data aggregation",
+      "Automated model selection ensures optimal accuracy per location",
+      "RMSE accuracy ranging from 0.22 to 9.88 leads per location",
+      "Data-driven budget allocation with ROI visibility",
+      "Scalable to 20+ locations with automated processes"
+    ],
+    technologies: ["Python", "Machine Learning", "Scikit-learn", "Streamlit", "Salesforce API", "Google Ads API"],
+    testimonial: {
+      quote: "The platform transformed our forecasting process. We now have accurate, data-driven predictions that guide our marketing spend allocation across all locations.",
+      author: "Marketing Director",
+      role: "Marketing Director",
+      company: "Multi-Location Business"
+    }
+  },
+  {
+    slug: "coming-soon-1",
+    title: "Coming Soon",
+    industry: "Case Study",
     icon: "Building2",
-    shortDescription: "Developed a custom ERP system to streamline operations, inventory management, and real-time reporting for a mid-sized manufacturing company.",
-    fullDescription: "A mid-sized manufacturing company was struggling with disconnected systems, manual data entry, and lack of real-time visibility into their operations. They needed a unified solution that could handle everything from inventory management to production planning and financial reporting.",
-    challenge: "The client was using multiple disconnected systems including spreadsheets, legacy software, and manual processes. This led to data inconsistencies, delayed reporting, and inefficient operations. They needed a comprehensive ERP solution that could integrate all aspects of their business.",
-    solution: "We developed a custom ERP system built with modern web technologies that integrated inventory management, production planning, sales, purchasing, and financial reporting into a single platform. The system features real-time dashboards, automated workflows, and mobile accessibility for on-the-go management.",
+    shortDescription: "We're working on exciting new case studies. Check back soon to see more examples of how we've helped businesses transform their operations.",
+    fullDescription: "We're continuously working on innovative solutions for our clients. New case studies will be added here soon showcasing our latest projects and successes.",
+    challenge: "Stay tuned for detailed case studies of our recent work.",
+    solution: "We're preparing comprehensive case studies that demonstrate our capabilities across various industries and use cases.",
     results: [
-      "40% reduction in operational costs",
-      "60% faster inventory processing",
-      "Real-time analytics dashboard",
-      "Eliminated manual data entry errors",
-      "Improved decision-making with instant insights"
+      "More case studies coming soon",
+      "Stay tuned for updates"
     ],
-    technologies: ["React", "Node.js", "PostgreSQL", "REST APIs"],
-    testimonial: {
-      quote: "The ERP system transformed how we operate. We now have complete visibility into our operations and can make data-driven decisions instantly.",
-      author: "John Smith",
-      role: "Operations Director",
-      company: "Manufacturing Co."
-    }
+    technologies: []
   },
   {
-    slug: "e-commerce-automation",
-    title: "E-Commerce Automation",
-    industry: "Retail",
+    slug: "coming-soon-2",
+    title: "Coming Soon",
+    industry: "Case Study",
     icon: "ShoppingCart",
-    shortDescription: "Built an AI-powered automation system that handles order processing, customer service, and inventory synchronization across multiple sales channels.",
-    fullDescription: "A growing e-commerce retailer was overwhelmed by manual order processing, customer inquiries, and inventory management across multiple platforms including their website, Amazon, eBay, and Shopify. They needed intelligent automation to scale their operations.",
-    challenge: "The business was spending 8+ hours daily on repetitive tasks like order processing, inventory updates, and customer service responses. As they grew, this became unsustainable and was limiting their ability to scale.",
-    solution: "We created an AI-powered automation platform that integrates with all their sales channels. The system automatically processes orders, syncs inventory in real-time, handles customer inquiries with AI chatbots, and provides predictive analytics for inventory management.",
+    shortDescription: "We're working on exciting new case studies. Check back soon to see more examples of how we've helped businesses transform their operations.",
+    fullDescription: "We're continuously working on innovative solutions for our clients. New case studies will be added here soon showcasing our latest projects and successes.",
+    challenge: "Stay tuned for detailed case studies of our recent work.",
+    solution: "We're preparing comprehensive case studies that demonstrate our capabilities across various industries and use cases.",
     results: [
-      "80% reduction in manual tasks",
-      "24/7 automated customer support",
-      "Seamless multi-platform integration",
-      "50% faster order fulfillment",
-      "Reduced inventory discrepancies by 95%"
+      "More case studies coming soon",
+      "Stay tuned for updates"
     ],
-    technologies: ["Python", "AI/ML", "API Integrations", "Cloud Infrastructure"],
-    testimonial: {
-      quote: "This automation system freed up our team to focus on growth and strategy. We've scaled 3x without adding staff.",
-      author: "Sarah Johnson",
-      role: "Founder & CEO",
-      company: "Retail Brand"
-    }
-  },
-  {
-    slug: "healthcare-workflow-system",
-    title: "Healthcare Workflow System",
-    industry: "Healthcare",
-    icon: "Stethoscope",
-    shortDescription: "Created a HIPAA-compliant patient management system with AI-assisted scheduling, billing automation, and secure data management.",
-    fullDescription: "A healthcare practice needed to modernize their patient management while maintaining strict HIPAA compliance. They required a system that could handle patient scheduling, medical records, billing, and secure communication while improving efficiency.",
-    challenge: "The practice was using outdated software that didn't integrate well, leading to double data entry, scheduling conflicts, and compliance concerns. They needed a modern, secure solution that could streamline operations while meeting strict healthcare regulations.",
-    solution: "We developed a HIPAA-compliant patient management system with AI-powered scheduling optimization, automated billing workflows, secure patient portals, and comprehensive audit trails. The system includes role-based access controls and end-to-end encryption.",
-    results: [
-      "50% faster patient onboarding",
-      "Automated compliance tracking",
-      "Improved data security",
-      "Reduced scheduling conflicts by 70%",
-      "Faster claim processing and reimbursement"
-    ],
-    technologies: ["React", "HIPAA Compliance", "Encryption", "Cloud Security"],
-    testimonial: {
-      quote: "The system has revolutionized our practice. We're more efficient, compliant, and our patients love the modern experience.",
-      author: "Dr. Michael Chen",
-      role: "Medical Director",
-      company: "Healthcare Practice"
-    }
+    technologies: []
   }
 ];
 

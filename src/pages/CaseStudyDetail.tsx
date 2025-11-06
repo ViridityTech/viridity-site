@@ -2,14 +2,15 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Building2, ShoppingCart, Stethoscope } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Building2, ShoppingCart, Stethoscope, Bot } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { getCaseStudyBySlug } from '@/data/caseStudies';
 
 const iconMap: Record<string, React.ReactNode> = {
   Building2: <Building2 size={32} />,
   ShoppingCart: <ShoppingCart size={32} />,
-  Stethoscope: <Stethoscope size={32} />
+  Stethoscope: <Stethoscope size={32} />,
+  Bot: <Bot size={32} />
 };
 
 const CaseStudyDetail = () => {
