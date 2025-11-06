@@ -1,0 +1,5 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" rx="110" ry="110" width="512" height="512" fill="#5548FF"/>
+  <!-- Thicker V -->
+  <path d="M150 140 L220 140 L256 300 L292 140 L362 140 L290 380 L222 380 Z" fill="white"/>
+</svg>
