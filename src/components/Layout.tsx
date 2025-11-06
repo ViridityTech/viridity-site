@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -9,9 +10,15 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const location = useLocation();
+  
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    // Only scroll to top if it's not a section route
+    const sectionRoutes = ['/services', '/about', '/contact'];
+    if (!sectionRoutes.includes(location.pathname)) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
 
   return (
     <div className="flex flex-col min-h-screen">

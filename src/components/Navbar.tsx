@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -8,6 +8,8 @@ import { cn } from '@/lib/utils';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -20,12 +22,39 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
+  const handleSectionClick = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
+    e.preventDefault();
+    const routeMap: Record<string, string> = {
+      'features': '/services',
+      'about': '/about',
+      'contact': '/contact'
+    };
+    const route = routeMap[section];
+    
+    if (location.pathname !== '/' && route) {
+      // If not on homepage, navigate to the route
+      navigate(route);
+    } else {
+      // If on homepage, scroll to section
+      const element = document.getElementById(section);
+      if (element) {
+        const offset = 80; // Account for fixed navbar
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+  
   const navLinks = [
-    { name: 'Home', path: '#home' },
-    { name: 'Services', path: '#features' },
-    { name: 'Case Studies', path: '#case-studies' },
-    { name: 'About', path: '#about' },
-    { name: 'Contact', path: '#contact' },
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services', section: 'features' },
+    { name: 'Case Studies', path: '/case-studies' },
+    { name: 'About', path: '/about', section: 'about' },
+    { name: 'Contact', path: '/contact', section: 'contact' },
   ];
 
   return (
@@ -58,13 +87,24 @@ const Navbar = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           {navLinks.map((link, index) => (
-            <a 
-              key={index}
-              href={link.path}
-              className="nav-link"
-            >
-              {link.name}
-            </a>
+            link.section ? (
+              <a 
+                key={index}
+                href={link.path}
+                onClick={(e) => handleSectionClick(e, link.section!)}
+                className="nav-link"
+              >
+                {link.name}
+              </a>
+            ) : (
+              <Link 
+                key={index}
+                to={link.path}
+                className="nav-link"
+              >
+                {link.name}
+              </Link>
+            )
           ))}
         </motion.nav>
         
@@ -75,7 +115,8 @@ const Navbar = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <a 
-            href="#contact" 
+            href="/contact"
+            onClick={(e) => handleSectionClick(e, 'contact')}
             className="bg-viridity-500 text-white px-5 py-2 rounded-lg font-medium hover:bg-viridity-600 transition-colors duration-300"
           >
             Talk to the Founders
@@ -104,19 +145,36 @@ const Navbar = () => {
           >
             <div className="flex flex-col space-y-5">
               {navLinks.map((link, index) => (
-                <a 
-                  key={index}
-                  href={link.path}
-                  className="text-lg font-medium text-foreground hover:text-viridity-500 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
+                link.section ? (
+                  <a 
+                    key={index}
+                    href={link.path}
+                    onClick={(e) => {
+                      handleSectionClick(e, link.section!);
+                      setIsMenuOpen(false);
+                    }}
+                    className="text-lg font-medium text-foreground hover:text-viridity-500 transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link 
+                    key={index}
+                    to={link.path}
+                    className="text-lg font-medium text-foreground hover:text-viridity-500 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
               <a 
-                href="#contact" 
+                href="/contact"
+                onClick={(e) => {
+                  handleSectionClick(e, 'contact');
+                  setIsMenuOpen(false);
+                }}
                 className="bg-viridity-500 text-white px-5 py-2 rounded-lg font-medium hover:bg-viridity-600 transition-colors duration-300 text-center"
-                onClick={() => setIsMenuOpen(false)}
               >
                 Get Started
               </a>

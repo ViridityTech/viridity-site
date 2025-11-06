@@ -1,7 +1,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Building2, ShoppingCart, Stethoscope } from 'lucide-react';
 import { caseStudies } from '@/data/caseStudies';
 
@@ -73,6 +73,8 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
 const CaseStudies = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
+  const location = useLocation();
+  const isOnCaseStudiesPage = location.pathname === '/case-studies';
   
   const iconMap: Record<string, React.ReactNode> = {
     Building2: <Building2 size={28} />,
@@ -81,7 +83,7 @@ const CaseStudies = () => {
   };
 
   return (
-    <section id="case-studies" className="section-padding">
+    <section id="case-studies" className={isOnCaseStudiesPage ? "section-padding pt-32" : "section-padding"}>
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
@@ -126,12 +128,12 @@ const CaseStudies = () => {
           <p className="text-muted-foreground mb-6">
             Want to see how we can help your business?
           </p>
-          <a 
-            href="#contact" 
+          <Link 
+            to="/#contact"
             className="inline-flex items-center justify-center bg-viridity-500 hover:bg-viridity-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300"
           >
             Start Your Project
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

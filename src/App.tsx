@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 // ✅ NEW: import Insights page
 import Insights from "./pages/Insights";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
+import CaseStudiesPage from "./pages/CaseStudies";
 
 const queryClient = new QueryClient();
 
@@ -25,8 +26,14 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            {/* Section routes - all render Index page but scroll to section */}
+            <Route path="/services" element={<Index />} />
+            <Route path="/about" element={<Index />} />
+            <Route path="/contact" element={<Index />} />
             {/* ✅ NEW: Insights route */}
             <Route path="/insights" element={<Insights />} />
+            {/* ✅ NEW: Case Studies page route */}
+            <Route path="/case-studies" element={<CaseStudiesPage />} />
             {/* ✅ NEW: Case Study detail route */}
             <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
             {/* Catch-all route for 404s */}
