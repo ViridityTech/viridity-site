@@ -1,8 +1,8 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
-import { ArrowRight, Building2, ShoppingCart, Stethoscope, Bot } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { ArrowRight, Building2, ShoppingCart, Stethoscope, Bot, Workflow } from 'lucide-react';
 import { caseStudies } from '@/data/caseStudies';
 
 interface CaseStudyCardProps {
@@ -26,6 +26,34 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  // TEMPORARY CHANGE (2025-01-XX): Learn More button redirects to contact section
+  // TO REVERT: Remove handleLearnMore function and replace the <a> tag below with:
+  // <Link to={`/case-studies/${slug}`} className="...">
+  //   Learn More
+  //   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+  // </Link>
+  const handleLearnMore = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (location.pathname === '/') {
+      // If on homepage, scroll to contact section
+      const element = document.getElementById('contact');
+      if (element) {
+        const offset = 80; // Account for fixed navbar
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    } else {
+      // If on another page, navigate to contact route
+      navigate('/contact');
+    }
+  };
   
   return (
     <motion.div
@@ -59,13 +87,24 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
         </ul>
       </div>
       
-      <Link 
-        to={`/case-studies/${slug}`}
+      {/* TEMPORARY CHANGE: Learn More button goes to contact section instead of detail page */}
+      {/* TO REVERT: Remove handleLearnMore function above and replace this <a> tag with:
+          <Link 
+            to={`/case-studies/${slug}`}
+            className="mt-auto inline-flex items-center text-viridity-600 dark:text-viridity-400 font-medium hover:translate-x-1 transition-transform duration-300 group"
+          >
+            Learn More
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+      */}
+      <a 
+        href="/contact"
+        onClick={handleLearnMore}
         className="mt-auto inline-flex items-center text-viridity-600 dark:text-viridity-400 font-medium hover:translate-x-1 transition-transform duration-300 group"
       >
         Learn More
         <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-      </Link>
+      </a>
     </motion.div>
   );
 };
@@ -80,7 +119,8 @@ const CaseStudies = () => {
     Building2: <Building2 size={28} />,
     ShoppingCart: <ShoppingCart size={28} />,
     Stethoscope: <Stethoscope size={28} />,
-    Bot: <Bot size={28} />
+    Bot: <Bot size={28} />,
+    Workflow: <Workflow size={28} />
   };
 
   return (
