@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 
 // ✅ NEW: import Insights page
 import Insights from "./pages/Insights";
+import CaseStudyDetail from "./pages/CaseStudyDetail";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             {/* ✅ NEW: Insights route */}
             <Route path="/insights" element={<Insights />} />
+            {/* ✅ NEW: Case Study detail route */}
+            <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
             {/* Catch-all route for 404s */}
             <Route path="*" element={<NotFound />} />
           </Routes>
