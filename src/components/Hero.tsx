@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Code, Terminal, Cpu, Infinity } from 'lucide-react';
 
@@ -56,19 +57,19 @@ const Hero = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <a 
-                  href="#contact" 
+                <Link 
+                  to="/contact" 
                   className="bg-viridity-600 hover:bg-viridity-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center group"
                 >
-                  Start Exploring
+                  Get a Free Consultation
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-                <a 
-                  href="#features" 
+                </Link>
+                <Link 
+                  to="/services" 
                   className="border border-border hover:border-viridity-500 px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center"
                 >
                   Learn More
-                </a>
+                </Link>
               </div>
             </motion.div>
           </div>

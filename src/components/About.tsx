@@ -1,5 +1,6 @@
 
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 
@@ -53,12 +54,12 @@ const About = () => {
               ))}
             </div>
             
-            <a 
-              href="#contact" 
+            <Link 
+              to="/contact" 
               className="inline-flex items-center justify-center bg-viridity-500 hover:bg-viridity-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300"
             >
               Work With Us
-            </a>
+            </Link>
           </motion.div>
           
           <div className="relative">

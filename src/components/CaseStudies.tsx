@@ -170,7 +170,7 @@ const CaseStudies = () => {
             Want to see how we can help your business?
           </p>
           <Link 
-            to="/#contact"
+            to="/contact"
             className="inline-flex items-center justify-center bg-viridity-500 hover:bg-viridity-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300"
           >
             Start Your Project

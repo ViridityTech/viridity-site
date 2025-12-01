@@ -1,13 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   
@@ -19,6 +19,31 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Initialize dark mode from localStorage or system preference
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+      setIsDarkMode(true);
+      document.documentElement.classList.add('dark');
+    } else {
+      setIsDarkMode(false);
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    if (!isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
@@ -53,6 +78,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services', section: 'features' },
     { name: 'Case Studies', path: '/case-studies' },
+    { name: 'Insights', path: '/insights' },
     { name: 'About', path: '/about', section: 'about' },
     { name: 'Contact', path: '/contact', section: 'contact' },
   ];
@@ -81,7 +107,7 @@ const Navbar = () => {
         
         {/* Desktop Navigation */}
         <motion.nav 
-          className="hidden md:flex space-x-10"
+          className="hidden md:flex items-center space-x-8"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -109,28 +135,45 @@ const Navbar = () => {
         </motion.nav>
         
         <motion.div 
-          className="hidden md:block"
+          className="hidden md:flex items-center gap-3"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <a 
-            href="/contact"
-            onClick={(e) => handleSectionClick(e, 'contact')}
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={toggleDarkMode}
+            className="w-10 h-10 rounded-lg flex items-center justify-center text-foreground/70 hover:text-foreground hover:bg-viridity-100 dark:hover:bg-viridity-900/30 transition-all duration-300"
+            aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </button>
+          
+          <Link 
+            to="/contact"
             className="bg-viridity-500 text-white px-5 py-2 rounded-lg font-medium hover:bg-viridity-600 transition-colors duration-300"
           >
             Talk to the Founders
-          </a>
+          </Link>
         </motion.div>
         
         {/* Mobile Navigation Toggle */}
-        <button 
-          className="block md:hidden text-foreground"
-          onClick={toggleMenu}
-          aria-label="Toggle Menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggleDarkMode}
+            className="w-10 h-10 rounded-lg flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors"
+            aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </button>
+          <button 
+            className="text-foreground"
+            onClick={toggleMenu}
+            aria-label="Toggle Menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
       
       {/* Mobile Navigation Menu */}
@@ -168,16 +211,13 @@ const Navbar = () => {
                   </Link>
                 )
               ))}
-              <a 
-                href="/contact"
-                onClick={(e) => {
-                  handleSectionClick(e, 'contact');
-                  setIsMenuOpen(false);
-                }}
+              <Link 
+                to="/contact"
+                onClick={() => setIsMenuOpen(false)}
                 className="bg-viridity-500 text-white px-5 py-2 rounded-lg font-medium hover:bg-viridity-600 transition-colors duration-300 text-center"
               >
                 Get Started
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

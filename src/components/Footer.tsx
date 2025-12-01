@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 
 const Footer = () => {
@@ -9,26 +9,26 @@ const Footer = () => {
     {
       title: "Company",
       links: [
-        { text: "About Us", url: "#about" },
-        { text: "Our Team", url: "#" },
-        { text: "Our Mission", url: "#" },
-        { text: "Contact Us", url: "#contact" }
+        { text: "About Us", url: "/about", isRoute: true },
+        { text: "Case Studies", url: "/case-studies", isRoute: true },
+        { text: "Insights", url: "/insights", isRoute: true },
+        { text: "Contact Us", url: "/contact", isRoute: true }
       ]
     },
     {
       title: "Services",
       links: [
-        { text: "Custom Applications", url: "#" },
-        { text: "Workflow Automation", url: "#" },
-        { text: "AI Development", url: "#" },
-        { text: "API Integrations", url: "#" }
+        { text: "Custom Applications", url: "/services", isRoute: true },
+        { text: "Workflow Automation", url: "/services", isRoute: true },
+        { text: "AI Development", url: "/services", isRoute: true },
+        { text: "API Integrations", url: "/services", isRoute: true }
       ]
     },
     {
       title: "Resources",
       links: [
-        { text: "Insights", url: "/insights" },
-        { text: "Case Studies", url: "/case-studies" }
+        { text: "Insights & Ideas", url: "/insights", isRoute: true },
+        { text: "Case Studies", url: "/case-studies", isRoute: true }
       ]
     }
   ];
@@ -38,12 +38,12 @@ const Footer = () => {
       <div className="container mx-auto py-12 px-6">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
           <div className="md:col-span-2">
-            <div className="flex items-center mb-6">
+            <Link to="/" className="flex items-center mb-6">
               <div className="w-8 h-8 bg-viridity-500 rounded-lg flex items-center justify-center mr-2">
                 <span className="text-white font-bold">V</span>
               </div>
               <span className="text-xl font-bold">Viridity</span>
-            </div>
+            </Link>
             
             <p className="text-muted-foreground mb-6 max-w-md">
               Viridity Technologies specializes in creating cutting-edge digital solutions, including custom applications, workflow automation, and AI agents that drive business growth.
@@ -51,11 +51,13 @@ const Footer = () => {
             
             <div className="flex items-center space-x-4">
               <a 
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/viridity-technologies"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 text-viridity-600 flex items-center justify-center transition-all duration-300 hover:bg-viridity-500 hover:text-white"
-                aria-label="Follow us on linkedin"
+                aria-label="Follow us on LinkedIn"
               >
-                <span className="sr-only">Follow us on linkedin</span>
+                <span className="sr-only">Follow us on LinkedIn</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                   <rect x="2" y="9" width="4" height="12"></rect>
@@ -72,13 +74,23 @@ const Footer = () => {
                 <ul className="space-y-3">
                   {column.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <a 
-                        href={link.url} 
-                        className="text-muted-foreground hover:text-viridity-500 transition-colors duration-200 flex items-center"
-                      >
-                        <ChevronRight className="h-4 w-4 mr-1" />
-                        {link.text}
-                      </a>
+                      {link.isRoute ? (
+                        <Link 
+                          to={link.url}
+                          className="text-muted-foreground hover:text-viridity-500 transition-colors duration-200 flex items-center"
+                        >
+                          <ChevronRight className="h-4 w-4 mr-1" />
+                          {link.text}
+                        </Link>
+                      ) : (
+                        <a 
+                          href={link.url}
+                          className="text-muted-foreground hover:text-viridity-500 transition-colors duration-200 flex items-center"
+                        >
+                          <ChevronRight className="h-4 w-4 mr-1" />
+                          {link.text}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -95,15 +107,12 @@ const Footer = () => {
           </p>
           
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-sm text-muted-foreground hover:text-viridity-500 transition-colors duration-200">
+            <Link to="/contact" className="text-sm text-muted-foreground hover:text-viridity-500 transition-colors duration-200">
               Privacy Policy
-            </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-viridity-500 transition-colors duration-200">
+            </Link>
+            <Link to="/contact" className="text-sm text-muted-foreground hover:text-viridity-500 transition-colors duration-200">
               Terms of Service
-            </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-viridity-500 transition-colors duration-200">
-              Cookie Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>
