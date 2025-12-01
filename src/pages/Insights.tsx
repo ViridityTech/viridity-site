@@ -1,24 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Clock, ArrowRight } from 'lucide-react';
 import Layout from '../components/Layout';
-
-const posts = [
-  {
-    title: "Welcome to Insights",
-    slug: "welcome-to-insights",
-    excerpt: "Explore our latest thinking on AI, automation, and digital innovation.",
-    date: "June 2025",
-    author: "Viridity Team",
-  },
-  {
-    title: "The Future of Process Automation",
-    slug: "future-of-process-automation",
-    excerpt: "How businesses are using AI to drive efficiency across operations.",
-    date: "May 2025",
-    author: "Viridity Team",
-  },
-];
+import { insights } from '../data/insights';
 
 const Insights = () => (
   <Layout>
@@ -34,22 +19,46 @@ const Insights = () => (
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {posts.map((post, index) => (
+          {insights.map((post, index) => (
             <motion.div
               key={index}
-              className="p-6 bg-white dark:bg-card shadow-lg rounded-xl transition-all duration-300 hover:shadow-xl"
+              className="group p-6 bg-white dark:bg-card shadow-lg rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
+              {/* Category Badge */}
+              <div className="mb-3">
+                <span className="inline-block px-2 py-1 bg-viridity-100 dark:bg-viridity-900/30 text-viridity-700 dark:text-viridity-400 rounded text-xs font-medium">
+                  {post.category}
+                </span>
+              </div>
+              
               <Link to={`/insights/${post.slug}`}>
-                <h3 className="text-2xl font-semibold text-viridity-700 dark:text-viridity-400 mb-2 hover:underline">
+                <h3 className="text-2xl font-semibold text-viridity-700 dark:text-viridity-400 mb-2 group-hover:text-viridity-600 dark:group-hover:text-viridity-300 transition-colors">
                   {post.title}
                 </h3>
               </Link>
+              
               <p className="text-muted-foreground mb-4">{post.excerpt}</p>
-              <div className="text-sm text-gray-500 dark:text-gray-400">
-                {post.date} • {post.author}
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
+                  <span>{post.date}</span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="h-3.5 w-3.5" />
+                    {post.readTime}
+                  </span>
+                </div>
+                
+                <Link 
+                  to={`/insights/${post.slug}`}
+                  className="inline-flex items-center gap-1 text-viridity-600 dark:text-viridity-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  Read more
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </motion.div>
           ))}

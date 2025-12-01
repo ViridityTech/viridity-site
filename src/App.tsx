@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 
 // ✅ NEW: import Insights page
 import Insights from "./pages/Insights";
+import InsightDetail from "./pages/InsightDetail";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
 import CaseStudiesPage from "./pages/CaseStudies";
 
@@ -30,8 +31,9 @@ const App = () => (
             <Route path="/services" element={<Index />} />
             <Route path="/about" element={<Index />} />
             <Route path="/contact" element={<Index />} />
-            {/* ✅ NEW: Insights route */}
+            {/* ✅ NEW: Insights routes */}
             <Route path="/insights" element={<Insights />} />
+            <Route path="/insights/:slug" element={<InsightDetail />} />
             {/* ✅ NEW: Case Studies page route */}
             <Route path="/case-studies" element={<CaseStudiesPage />} />
             {/* ✅ NEW: Case Study detail route */}
